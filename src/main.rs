@@ -1,112 +1,106 @@
-use druid::widget::{Align, Flex, Label, List};
-use druid::{AppLauncher, Data, Env, Lens, Widget, WindowDesc, WidgetExt};
-use druid::im::Vector;
+#![windows_subsystem = "windows"]
 
-#[derive(Clone, Data, Lens)]
-struct Battlegroup {
-    name: String,
-    ships: Vector<Ship>,
+use cursive::views::*;
+use cursive::traits::*;
+use cursive::Cursive;
+use cursive::view::{IntoBoxedView, ViewWrapper};
+use cursive::align::{Align, HAlign};
+use cursive::wrap_impl;
+
+struct ShipHull {
+    class: String,
+    size: String,
+    weapons: Vec<String>,
+    view: LinearLayout,
 }
 
-#[derive(Clone, Data, Lens)]
+impl ShipHull {
+    fn new(class: impl Into<String> + Clone, size: impl Into<String> + Clone, weapons: Vec<String>) -> Self {
+        let mut equipment_view = LinearLayout::horizontal();
+        for weapon in &weapons {
+            equipment_view.add_child(TextView::new(weapon).align(Align::center()).full_width())
+        }
+
+        let hull_view = LinearLayout::vertical()
+            .child(TextView::new(format!("Hull: {}-class {}", class.clone().into(), size.clone().into())))
+            .child(equipment_view);
+
+        Self { class: class.into(), size: size.into(), weapons, view: hull_view }
+    }
+}
+
+impl Clone for ShipHull {
+    fn clone(&self) -> Self {
+        Self::new(&self.class, &self.size, self.weapons.clone())
+    }
+}
+
+impl ViewWrapper for ShipHull {
+    wrap_impl!(self.view: LinearLayout);
+}
+
 struct Ship {
     name: String,
-    traits: Vector<Trait>,
-    weapons: Vector<Weapon>,
-    systems: Vector<System>,
-    wings: Vector<Wing>,
-    escorts: Vector<Escort>,
+    hull: ShipHull,
+    view: Panel<ShipHull>,
 }
 
 impl Ship {
-    fn widget() -> Flex<Self> {
-        let traits = List::new(|| { Label::new(|data: &Trait, _: &Env| { data.name.to_string() }) }).lens(Ship::traits);
-        let weapons = List::new(|| { Label::new(|data: &Weapon, _: &Env| { data.name.to_string() }) }).lens(Ship::weapons);
-        let systems = List::new(|| { Label::new(|data: &System, _: &Env| { data.name.to_string() }) }).lens(Ship::systems);
-        let wings = List::new(|| { Label::new(|data: &Wing, _: &Env| { data.name.to_string() }) }).lens(Ship::wings);
-        let escorts = List::new(|| { Label::new(|data: &Escort, _: &Env| { data.name.to_string() }) }).lens(Ship::escorts);
+    fn new(name: impl Into<String> + Clone, hull: ShipHull) -> Self {
+        let view = Panel::new(hull.clone())
+            .title(name.clone())
+            .title_position(HAlign::Left);
+        Ship { name: name.into(), hull, view }
+    }
 
-        Flex::column()
-            .with_child(Label::new(|data: &String, _: &Env| { data.to_string() }).lens(Ship::name))
-            .with_child(Flex::row()
-                .with_child(traits)
-                .with_child(weapons)
-                .with_child(systems)
-                .with_child(wings)
-                .with_child(escorts)
+    fn dialog_add(ctx: &mut Cursive) {
+        fn ok(ctx: &mut Cursive, name: &str) {
+            ctx.call_on_name("Ship list", |list: &mut ListView| {
+                //list.add_child(TextView::new(name));
+                list.add_child("test", TextView::new("test"));
+            });
+            ctx.pop_layer();
+        }
+
+        ctx.add_layer(
+            Dialog::around(
+                EditView::new()
+                    .on_submit(ok)
+                    .with_name("Add ship dialog")
             )
+                .title("Add ship")
+                .button("Add", |ctx| {
+                    let new_ship_name = ctx.call_on_name("Add ship dialog", |data: &mut EditView| { data.get_content() }).unwrap();
+                    ok(ctx, &new_ship_name)
+                })
+                .dismiss_button("Cancel")
+        )
     }
 }
 
-#[derive(Clone, Data, Lens, Debug)]
-struct Trait {
-    name: String,
-}
-
-#[derive(Clone, Data, Lens, Debug)]
-struct Weapon {
-    name: String,
-}
-
-#[derive(Clone, Data, Lens, Debug)]
-struct System {
-    name: String,
-}
-
-#[derive(Clone, Data, Lens, Debug)]
-struct Wing {
-    name: String,
-}
-
-#[derive(Clone, Data, Lens, Debug)]
-struct Escort {
-    name: String,
-}
-
-fn mock_generate_ship(name: String) -> Ship {
-    Ship {
-        name: name.to_string(),
-        traits: vec![Trait { name: format!("Trait [{}]", name) }].into(),
-        weapons: vec![Weapon { name: format!("Weapon [{}]", name) }].into(),
-        systems: vec![System { name: format!("System [{}]", name) }].into(),
-        wings: vec![Wing { name: format!("Wing [{}]", name) }].into(),
-        escorts: vec![Escort { name: format!("Escort [{}]", name) }].into(),
+impl Clone for Ship {
+    fn clone(&self) -> Self {
+        Self::new(&self.name, self.hull.clone())
     }
+}
+
+impl ViewWrapper for Ship {
+    wrap_impl!(self.view: Panel<ShipHull>);
 }
 
 fn main() {
-    // describe the main window
-    let main_window = WindowDesc::new(build_root_widget)
-        .title("Oxidized Battlegroup".to_string());
+    let mut ctx = cursive::default();
 
-    // create the initial app state
-    let mut ships = Vector::new();
-    for i in 1..=3 {
-        ships.push_back(mock_generate_ship(format!("Carrier {}", i)))
-    }
-    let initial_state = Battlegroup {
-        name: "New Battlegroup".into(),
-        ships,
-    };
+    ctx.add_global_callback('q', |s| s.quit());
 
-    // start the application
-    AppLauncher::with_window(main_window)
-        .launch(initial_state)
-        .expect("Failed to launch application");
-}
+    ctx.add_layer(LinearLayout::vertical()
+        .child(Ship::new("Weaponship1", ShipHull::new("Alpha", "Frigate", vec!["Weapon".to_string()])))
+        .child(Ship::new("Weaponship2", ShipHull::new("Beta", "Frigate", vec!["Weapon1".to_string(), "Weapon2".to_string(), "Weapon3".to_string()])))
+        .child(Ship::new("Weaponship3", ShipHull::new("Gamma", "Frigate", vec!["WeaponX".to_string(), "WeaponY".to_string()])))
+        .child(Button::new("Add ship", Ship::dialog_add))
+        .with_name("Ship list")
+        .full_width()
+    );
 
-fn build_root_widget() -> impl Widget<Battlegroup> {
-    // a label that will determine its text based on the current app data.
-    let battlegroup_name = Label::new(|name: &String, _env: &Env| name.to_string()).lens(Battlegroup::name);
-    let ship_list = List::new(|| {
-        Ship::widget()
-    }).lens(Battlegroup::ships);
-
-    // arrange the two widgets vertically, with some padding
-    let layout = Flex::column()
-        .with_child(battlegroup_name)
-        .with_child(ship_list);
-
-    // center the two widgets in the available space
-    Align::centered(layout)
+    ctx.run();
 }
