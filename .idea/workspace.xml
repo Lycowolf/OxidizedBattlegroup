@@ -4,7 +4,12 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="582ae953-51a5-41c0-b6af-0f008d4d32bc" name="Default Changelist" comment="" />
+    <list default="true" id="582ae953-51a5-41c0-b6af-0f008d4d32bc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,25 +60,37 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604858720315">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604858720315" />
+    <state x="999" y="501" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604858595954">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="999" y="501" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604858595954" />
     <state x="960" y="435" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1604494056163">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="960" y="435" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604494056163" />
-    <state width="2516" height="396" key="GridCell.Tab.0.bottom" timestamp="1604502919251">
+    <state width="2516" height="402" key="GridCell.Tab.0.bottom" timestamp="1605038230745">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="396" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604502919251" />
-    <state width="2516" height="396" key="GridCell.Tab.0.center" timestamp="1604502919251">
+    <state width="2516" height="402" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605038230745" />
+    <state width="2516" height="402" key="GridCell.Tab.0.center" timestamp="1605038230745">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="396" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604502919251" />
-    <state width="2516" height="396" key="GridCell.Tab.0.left" timestamp="1604502919251">
+    <state width="2516" height="402" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605038230745" />
+    <state width="2516" height="402" key="GridCell.Tab.0.left" timestamp="1605038230744">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="396" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604502919251" />
-    <state width="2516" height="396" key="GridCell.Tab.0.right" timestamp="1604502919251">
+    <state width="2516" height="402" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605038230744" />
+    <state width="2516" height="402" key="GridCell.Tab.0.right" timestamp="1605038230745">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="396" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604502919251" />
+    <state width="2516" height="402" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605038230745" />
+    <state x="1097" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605021815886">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1097" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605021815886" />
   </component>
 </project>
