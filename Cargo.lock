@@ -915,6 +915,7 @@ dependencies = [
  "egui",
  "egui_glium",
  "serde",
+ "serde_json",
  "strum",
  "strum_macros",
 ]

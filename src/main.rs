@@ -109,7 +109,7 @@ fn main() {
     let title = "Oxidized Battlegroup";
 
     // Persist app state to file:
-    let storage = egui_glium::storage::FileStorage::from_path("battlegroup.json".into());
+    let storage = egui_glium::storage::FileStorage::from_path("egui_battlegroup.json".into());
 
     // Alternative: store nowhere
     // let storage = egui::app::DummyStorage::default();
