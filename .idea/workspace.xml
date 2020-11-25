@@ -22,7 +22,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="582ae953-51a5-41c0-b6af-0f008d4d32bc" name="Default Changelist" comment="">
+    <list default="true" id="582ae953-51a5-41c0-b6af-0f008d4d32bc" name="Default Changelist" comment="Weapon tags">
+      <change afterPath="$PROJECT_DIR$/src/app_data/systems.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app_data/tags.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
@@ -30,7 +33,6 @@
       <change beforePath="$PROJECT_DIR$/src/app_data.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_data.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app_data/weapons.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_data/weapons.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/editor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +61,9 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Cargo.Run editor release">
+  <component name="RunManager" selected="Cargo.Run editor">
     <configuration name="Run battlegroup release" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package oxidized_battlegroup --bin battlegroup --release" />
@@ -129,6 +132,14 @@
       <option name="presentableId" value="Default" />
       <updated>1604172576415</updated>
     </task>
+    <task id="LOCAL-00001" summary="Weapon tags">
+      <created>1605485045021</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605485045021</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +154,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Weapon tags" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weapon tags" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605484453945">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -156,22 +171,34 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="960" y="435" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1604494056163" />
-    <state width="2516" height="383" key="GridCell.Tab.0.bottom" timestamp="1605484881231">
+    <state width="2516" height="327" key="GridCell.Tab.0.bottom" timestamp="1606348082091">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="383" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605484881231" />
-    <state width="2516" height="383" key="GridCell.Tab.0.center" timestamp="1605484881231">
+    <state width="2516" height="327" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1606348082091" />
+    <state width="1636" height="271" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1680.1050@2560.0.1680.1050" timestamp="1605486751147" />
+    <state width="2516" height="327" key="GridCell.Tab.0.center" timestamp="1606348082091">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="383" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605484881231" />
-    <state width="2516" height="383" key="GridCell.Tab.0.left" timestamp="1605484881231">
+    <state width="2516" height="327" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1606348082091" />
+    <state width="1636" height="271" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1680.1050@2560.0.1680.1050" timestamp="1605486751147" />
+    <state width="2516" height="327" key="GridCell.Tab.0.left" timestamp="1606348082090">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="383" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605484881231" />
-    <state width="2516" height="383" key="GridCell.Tab.0.right" timestamp="1605484881231">
+    <state width="2516" height="327" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1606348082090" />
+    <state width="1636" height="271" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1680.1050@2560.0.1680.1050" timestamp="1605486751147" />
+    <state width="2516" height="327" key="GridCell.Tab.0.right" timestamp="1606348082091">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2516" height="383" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605484881231" />
+    <state width="2516" height="327" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1606348082091" />
+    <state width="1636" height="271" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1680.1050@2560.0.1680.1050" timestamp="1605486751147" />
+    <state x="781" y="331" key="SettingsEditor" timestamp="1605979876967">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="331" key="SettingsEditor/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605979876967" />
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1605485048095">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.0.1680.1050@0.0.2560.1400" timestamp="1605485048095" />
     <state x="1097" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605021815886">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
